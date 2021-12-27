@@ -15,6 +15,6 @@ use App\Jobs\SendNotification;
 */
 
 Route::get('/', function () {
-    (new SendNotification())->handle();
+    SendNotification::dispatch();
     return view('welcome');
 });
