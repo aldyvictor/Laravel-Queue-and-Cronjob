@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Jobs\SendNotification;
+use App\Jobs\ProcessPayment;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,10 @@ use App\Jobs\SendNotification;
 */
 
 Route::get('/', function () {
-    SendNotification::dispatch();
+    foreach (range(1, 100) as $i) {
+        SendNotification::dispatch();
+    }
+
+    ProcessPayment::dispatch()->onQueue('payments');
     return view('welcome');
 });
