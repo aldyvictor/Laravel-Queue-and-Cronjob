@@ -49,7 +49,7 @@ class TransactionController extends Controller
                     'product_image_url' => 'null',
                     'expired_at' => $dateExpired,
                     'amount' => $amount
-                ], 201);
+                ]);
 
                 // $details = array (
                 //     'email' => $user->user->email,
@@ -62,7 +62,7 @@ class TransactionController extends Controller
                 dispatch(new UpdatePendingToNoPaid($request->user_id, $transaction->id))->delay(now()->addMinutes(60));
                 return response()->json([
                     'message' => 'Add to transaction success, you must pay it before '. Carbon::create($dateExpired)->format("Y F d H:i:s"),
-                ], 201);
+                ], 200);
             } catch (\Throwable $th) {
                 return $th;
                 return response()->json([

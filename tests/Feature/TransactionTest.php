@@ -24,7 +24,7 @@ class TransactionTest extends TestCase
             'product_image_url' => 'null',
             'expired_at' => '2022-01-23 08:23:23',
             'amount' => 200000
-        ]))->assertCreated();
+        ]))->assertOk();
 
     }
 }
