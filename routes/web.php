@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
-use App\Jobs\SendNotification;
-use App\Jobs\ProcessPayment;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +15,5 @@ use App\Jobs\ProcessPayment;
 */
 
 Route::get('/', function () {
-    foreach (range(1, 100) as $i) {
-        SendNotification::dispatch();
-    }
-
-    ProcessPayment::dispatch()->onQueue('payments');
     return view('welcome');
 });
