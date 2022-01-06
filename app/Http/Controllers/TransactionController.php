@@ -49,7 +49,7 @@ class TransactionController extends Controller
                     'product_image_url' => 'null',
                     'expired_at' => $dateExpired,
                     'amount' => $amount
-                ]);
+                ], 201);
 
                 // $details = array (
                 //     'email' => $user->user->email,
